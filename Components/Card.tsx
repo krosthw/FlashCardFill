@@ -1,6 +1,8 @@
 'use client'
+import { DictCard } from "@/Models/FlashModels";
 import Container from "@/components/ui/container";
-import { useState } from "react";
+import { use, useState } from "react";
+
 
 
 
@@ -9,6 +11,9 @@ const Card = () => {
     function handleClick() {
         setRotate(!rotate);
     }
+
+    let obj: DictCard ={dict:[{latoa:"aaa", latob:"bbb", pron:"ccc"}]};
+    
     return (
         <div className="w-[300px] h-[420px] bg-transparent cursor-pointer group perspective">
             {/* <div className={`relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000`}> */}
@@ -16,23 +21,17 @@ const Card = () => {
                 <div className="absolute backface-hidden border-2 w-full h-full text-center flex flex-col items-center justify-center text-yellow-300 px-2 pb-2" onClick={handleClick}>
                     <h1 className="text-3xl font-semibold">Lato A</h1>
                     <p>
-                        Malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel.
-                        Ac ut consequat semper viverra. Sed velit dignissim sodales ut.
-                        Lorem mollis aliquam ut porttitor leo a.
-                        Suscipit adipiscing bibendum est ultricies integer quis auctor.
-                        Ipsum consequat nisl vel pretium lectus.
+                        {obj.dict[0].latoa}
                     </p>
+                    <h1 className="text-3xl font-semibold">/pronunciaA/</h1>
                 </div>
                 <div className={`absolute my-rotate-y-180 backface-hidden w-full h-full bg-yellow-300 overflow-hidden`}  >
                     <div className="text-center flex flex-col items-center justify-center h-full text-blue-800 px-2 pb-2" onClick={handleClick}>
                         <h1 className="text-3xl font-semibold">Lato B</h1>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                            itaque assumenda saepe animi maxime libero non quasi, odit natus
-                            veritatis enim culpa nam inventore doloribus quidem temporibus
-                            amet velit accusamus.
+                        {obj.dict[0].latob}
                         </p>
-                        <h1 className="text-3xl font-semibold">/pronuncia/</h1>
+                        <h1 className="text-3xl font-semibold">/{obj.dict[0].pron}/</h1>
                     </div>
                     <button className="bg-red-500 px-6 py-2 font-bold text-white rounded-full absolute bottom-10 left-28 scale-125">
                         NEXT
