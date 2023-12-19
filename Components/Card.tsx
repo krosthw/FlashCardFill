@@ -1,19 +1,22 @@
 'use client'
-import { DictCard } from "@/Models/FlashModels";
+import { CardObj, DictCard } from "@/Models/FlashModels";
 import Container from "@/components/ui/container";
 import { use, useState } from "react";
 
+type CardProps = {
+    cardObj: CardObj;
+    ev: any
+};
 
 
-
-const Card = () => {
+const Card = (data: CardProps) => {
     const [rotate, setRotate] = useState(false);
     function handleClick() {
         setRotate(!rotate);
     }
 
-    let obj: DictCard ={dict:[{latoa:"aaa", latob:"bbb", pron:"ccc"}]};
-    
+    let obj = data;
+
     return (
         <div className="w-[300px] h-[420px] bg-transparent cursor-pointer group perspective">
             {/* <div className={`relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000`}> */}
@@ -21,7 +24,7 @@ const Card = () => {
                 <div className="absolute backface-hidden border-2 w-full h-full text-center flex flex-col items-center justify-center text-yellow-300 px-2 pb-2" onClick={handleClick}>
                     <h1 className="text-3xl font-semibold">Lato A</h1>
                     <p>
-                        {obj.dict[0].latoa}
+                        {obj.cardObj.latoa}
                     </p>
                     <h1 className="text-3xl font-semibold">/pronunciaA/</h1>
                 </div>
@@ -29,11 +32,13 @@ const Card = () => {
                     <div className="text-center flex flex-col items-center justify-center h-full text-blue-800 px-2 pb-2" onClick={handleClick}>
                         <h1 className="text-3xl font-semibold">Lato B</h1>
                         <p>
-                        {obj.dict[0].latob}
+                            {obj.cardObj.latob}
                         </p>
-                        <h1 className="text-3xl font-semibold">/{obj.dict[0].pron}/</h1>
+                        <h1 className="text-3xl font-semibold">/{obj.cardObj.pron}/</h1>
                     </div>
-                    <button className="bg-red-500 px-6 py-2 font-bold text-white rounded-full absolute bottom-10 left-28 scale-125">
+                    <button className="bg-red-500 px-6 py-2 font-bold text-white rounded-full absolute bottom-10 left-28 scale-125"
+                    onClick={data.ev}
+                    >
                         NEXT
                     </button>
                 </div>
