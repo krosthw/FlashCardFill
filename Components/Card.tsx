@@ -1,5 +1,5 @@
 'use client'
-import { CardObj, DictCard } from "@/Models/FlashModels";
+import { CardObj, DictCard } from "@/Models/flashModels";
 import Container from "@/components/ui/container";
 import { use, useState } from "react";
 

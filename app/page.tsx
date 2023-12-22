@@ -1,6 +1,7 @@
 "use client"
-import { DictCard } from '../Models/FlashModels';
-import Card from '../components/Card'
+import Card from '../components/card'
+import { DictCard } from '../Models/flashModels';
+
 import Image from 'next/image'
 import { use, useState } from 'react';
 
