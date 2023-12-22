@@ -1,6 +1,6 @@
 "use client"
 import Card from '../components/card'
-import { DictCard } from '../Models/flashModels';
+import { DictCard } from '../models/flashModels';
 
 import Image from 'next/image'
 import { use, useState } from 'react';
@@ -17,9 +17,9 @@ export default function Home() {
   
   console.log(obj)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    //min-h-screen
+    <main className="flex  flex-col items-center justify-between p-6">  
       <Card  cardObj={obj.dict[cnt]} ev={()=>setCnt(cnt++)} />
-
     </main>
   )
 }
