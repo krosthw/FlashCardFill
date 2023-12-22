@@ -1,5 +1,5 @@
-import Footer from '@/components/footer'
-import NavBar from '@/components/navbar'
+import Footer from '../components/footer'
+import NavBar from '../components/navbar'
 import type { Metadata } from 'next'
 import { Urbanist } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
