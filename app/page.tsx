@@ -1,29 +1,66 @@
-"use client"
-import NavBar from '@/components/navbar';
-import Card from '../components/card'
-import { DictCard } from '../models/flashModels';
+'use client'
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import Image from 'next/image'
-import { use, useState } from 'react';
+import deFlag from '@/media/DE.png'
+import itFlag from '@/media/IT.png'
+import arrow from '@/media/left-and-right-arrow-white.png';
+import '../css/button.css';
+
+import NavBar from '@/components/navbar';
 import Footer from '@/components/footer';
 
-async function getQuotes(): Promise<DictCard> {
-  var jj = await fetch("https://api.npoint.io/2cdc369c1349ef558579", { cache: "no-store", });
-  let obj: DictCard = await jj.json() as DictCard;
-  return obj;
-}
+
 
 export default function Home() {
-  let [cnt, setCnt] = useState(0);
-  let obj = use(getQuotes());
+  const router = useRouter();
 
-  console.log(obj)
+  // Funzione per gestire il click sul pulsante di login
+  const handleLoginClick = () => {
+    // Reindirizza l'utente alla pagina di login
+    router.push('/login');
+  };
+
+  // Funzione per gestire il click sul pulsante di test
+  const handleTestClick = () => {
+    // Reindirizza l'utente alla pagina di test
+    router.push('/test');
+  };
+
   return (
     //min-h-screen
     <main >
-      <NavBar />
+
       <div className="flex  flex-col items-center justify-between p-6" >
-        <Card cardObj={obj.dict[cnt]} ev={() => setCnt(cnt++)} />
+
+        <h1 className="flex justify-center mt-8">
+          <Image
+            src={deFlag}
+            width={100}
+            height={100}
+            alt="Picture of the author"
+          />
+           <Image
+            src={arrow}
+            width={100}
+            height={100}
+            alt="Picture of the author"
+            color='white'
+          />
+           <Image
+            src={itFlag}
+            width={100}
+            height={100}
+            alt="Picture of the author"
+          />
+        </h1>
+        <div className="flex justify-center mt-8">
+          <button className="blue-button" onClick={handleLoginClick}>Login</button>
+          <button className="green-button" onClick={handleTestClick}>Test</button>
+        </div>
+
       </div>
       <Footer />
     </main>

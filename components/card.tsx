@@ -1,7 +1,13 @@
 'use client'
 import { CardObj, DictCard } from "@/models/flashModels";
-import Container from "@/components/ui/container";
+import Image from 'next/image'
 import { use, useState } from "react";
+
+import Container from "@/components/ui/container";
+
+
+import deFlag from '@/media/DE.png'
+import itFlag from '@/media/IT.png'
 
 type CardProps = {
     cardObj: CardObj;
@@ -27,6 +33,14 @@ const Card = (data: CardProps) => {
                         {obj.cardObj.latoa}
                     </p>
                     <h1 className="text-3xl font-semibold">/pronunciaA/</h1>
+                    <div className="px-0 py-2 font-bold text-white rounded-full absolute bottom-3 left-3">
+                        <Image
+                            src={deFlag}
+                            width={30}
+                            height={30}
+                            alt="de"
+                        />
+                    </div>
                 </div>
                 <div className={`absolute my-rotate-y-180 backface-hidden w-full h-full bg-yellow-300 overflow-hidden`}  >
                     <div className="text-center flex flex-col items-center justify-center h-full text-blue-800 px-2 pb-2" onClick={handleClick}>
@@ -35,12 +49,21 @@ const Card = (data: CardProps) => {
                             {obj.cardObj.latob}
                         </p>
                         <h1 className="text-3xl font-semibold">/{obj.cardObj.pron}/</h1>
+
+                        <button className="bg-red-500 px-6 py-2 font-bold text-white rounded-full absolute bottom-10 left-28 scale-125"
+                            onClick={data.ev}
+                        >
+                            NEXT
+                        </button>
+                        <div className="px-0 py-2 font-bold text-white rounded-full absolute bottom-3 left-3">
+                            <Image
+                                src={itFlag}
+                                width={30}
+                                height={30}
+                                alt="it"
+                            />
+                        </div>
                     </div>
-                    <button className="bg-red-500 px-6 py-2 font-bold text-white rounded-full absolute bottom-10 left-28 scale-125"
-                    onClick={data.ev}
-                    >
-                        NEXT
-                    </button>
                 </div>
             </div>
         </div>
